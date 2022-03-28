@@ -17,6 +17,6 @@ train         : model goes triain mode
 eval          : model goes eval mode
 </pre>
 * #### Training the model
-'''
+```
 python main.py --train --mode {reshape or single } --external {external matrix} --dot --lamb {lamb} --hidden_size {hidden size} --group_size {group size} --epochs {epochs} --lr {learning rate}
-'''
+```
