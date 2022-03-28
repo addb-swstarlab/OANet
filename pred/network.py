@@ -7,7 +7,6 @@ class SingleNet(nn.Module):
         self.input_dim = input_dim # 22
         self.hidden_dim = hidden_dim # 32
         self.output_dim = output_dim # 1
-        # self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim), nn.ReLU())
         self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim), nn.Sigmoid())
         self.im_fc = nn.Sequential(nn.Linear(self.hidden_dim, self.output_dim))
 
