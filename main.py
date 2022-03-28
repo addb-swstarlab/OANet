@@ -5,7 +5,7 @@ import pandas as pd
 # from train_train_test_split_logger import train_Net
 
 import numpy as np
-from model.train import train_Net
+from models.train import train_Net
 from models.utils import get_logger
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import KFold
