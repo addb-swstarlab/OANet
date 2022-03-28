@@ -7,7 +7,7 @@ We propose OANet using the attention mechanism to predict database performance s
 external      : external matrix (TIME, RATE, WAF, SA)
 mode          : kind of neural network ('reshape' is a proposed model, 'single'is a single layer neural network)
 hidden_size   : hidden size of the model
-group_size    : group soze pf the model
+group_size    : group size of the model
 dot           : Whether to use dot-loss or not
 lamb          : application rate of dot loss
 lr            : learning rate
