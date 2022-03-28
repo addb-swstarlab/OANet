@@ -56,7 +56,7 @@ def train_Net(logger, data, METRIC, MODE, batch_size, lr, epochs, hidden_dim, gr
     MSE_res = mean_squared_error(true, pred)
 
     cnt += 1
-    # print(f"-------{cnt}th results-------")
+    # print(f"-------{cnt}-------")
     print(f"--------results-------")
     print(f"r2  score = {r2_res:.4f}")
     print(f"pcc score = {pcc_res:.4f}")
