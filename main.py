@@ -21,9 +21,9 @@ parser.add_argument('--hidden_size', type=int, default=16, help='Define model hi
 parser.add_argument('--group_size', type=int, default=32, help='Define model gruop size')
 parser.add_argument('--dot', action='store_true', help='if trigger, model use loss term, dot')
 parser.add_argument('--lamb', type=float, default=0.1, help='define lambda of loss function' )
-parser.add_argument('--lr', type=float, default=0.01, help='Define learning rate')  # 0.0001이었음
-parser.add_argument('--act_function', type=str, default='Sigmoid', help='choose which model be used on fitness function')   #log저장용
-parser.add_argument('--epochs', type=int, default=30, help='Define train epochs')   # 500이었음
+parser.add_argument('--lr', type=float, default=0.01, help='Define learning rate')  
+parser.add_argument('--act_function', type=str, default='Sigmoid', help='choose which model be used on fitness function')   
+parser.add_argument('--epochs', type=int, default=30, help='Define train epochs')   
 parser.add_argument('--batch_size', type=int, default=64, help='Define model batch size')
 parser.add_argument('--train', action='store_true', help='if trigger, model goes triain mode')
 parser.add_argument('--eval', action='store_true', help='if trigger, model goes eval mode')
