@@ -3,7 +3,7 @@ import argparse
 import pandas as pd
 import numpy as np
 from models.train import train_Net
-from models.utils import get_logger
+from utils import get_logger
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
