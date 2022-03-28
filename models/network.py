@@ -7,14 +7,11 @@ class SingleNet(nn.Module):
         self.input_dim = input_dim # 22
         self.hidden_dim = hidden_dim # 32
         self.output_dim = output_dim # 1
-        # self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim), nn.ReLU())
         self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim), nn.Sigmoid())
-#         self.hidden = nn.Sequential(nn.Linear(self.hidden_dim, 64), nn.ReLU())
         self.im_fc = nn.Sequential(nn.Linear(self.hidden_dim, self.output_dim))
 
     def forward(self, x):
         self.x_kb = self.knob_fc(x)
-#         self.h = self.hidden(self.x_kb)
         self.x_im = self.im_fc(self.x_kb)
         return self.x_im
 
@@ -29,7 +26,6 @@ class ReshapeNet(nn.Module):
 
         self.embedding = nn.Linear(self.wk_num, self.hidden_dim)
         self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim*self.group_dim), nn.Sigmoid()) # (22, 1) -> (group*hidden, 1)
-        # self.knob_fc = nn.Sequential(nn.Linear(self.input_dim, self.hidden_dim*self.group_dim), nn.ReLU()) # (22, 1) -> (group*hidden, 1)
         self.attention = nn.MultiheadAttention(self.hidden_dim, 1)
         self.active = nn.Sigmoid()
         self.fc = nn.Linear(self.hidden_dim, self.output_dim)
@@ -48,5 +44,4 @@ class ReshapeNet(nn.Module):
         self.attn_output = self.active(self.attn_output.squeeze())
         outs = self.attn_output
         self.outputs = self.fc(outs)
-        # return self.outputs
         return self.outputs
