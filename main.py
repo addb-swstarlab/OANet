@@ -1,12 +1,9 @@
 import os
 import argparse
 import pandas as pd
-# from models.network import ReshapeNet, SingleNet
 from train_train_test_split_logger import train_Net
 import numpy as np
 from models.utils import get_logger
-# from models.knobs import Knob
-# from models.train import train_model
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
