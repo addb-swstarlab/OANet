@@ -11,7 +11,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 os.system('clear')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--external', type=str, choices=['TIME', 'RATE', 'WAF', 'SA'], help='Define split number for K-Folds cross validation')
+parser.add_argument('--external', type=str, choices=['TIME', 'RATE', 'WAF', 'SA'], help='choose which external matrix be used as performance indicator')
 # parser.add_argument('--kf', type=float, default=3, help='Define split number for K-Folds cross validation')
 parser.add_argument('--mode', type=str, default='reshape', help='choose which model be used on fitness function')
 parser.add_argument('--hidden_size', type=int, default=16, help='Define model hidden size')
