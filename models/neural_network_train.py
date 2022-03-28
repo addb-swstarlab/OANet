@@ -6,8 +6,8 @@ from torch.utils.data import TensorDataset, DataLoader
 from datetime import datetime
 import numpy as np
 from sklearn.metrics import r2_score
-from network import SingleNet, ReshapeNet
-from utils import get_filename
+from models.network import SingleNet, ReshapeNet
+from models.utils import get_filename
 # from pytorchtools import EarlyStopping
 
 class NeuralModel():
