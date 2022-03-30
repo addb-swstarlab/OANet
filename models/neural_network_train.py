@@ -15,9 +15,9 @@ class NeuralModel():
                  output_dim, lamb, group_dim=None, wk_num=None, dot=False):
         self.mode = mode
         self.batch_size = batch_size
-        self.lr = lr
+        self.lr = lr                    # learning rate
         self.epochs = epochs
-        self.dot = dot
+        self.dot = dot                     
         self.lamb = lamb
 
         # add logger
