@@ -17,7 +17,7 @@ class NeuralModel():
         self.batch_size = batch_size
         self.lr = lr                    # learning rate
         self.epochs = epochs
-        self.dot = dot                     
+        self.dot = dot                  # dot loss          
         self.lamb = lamb
 
         # add logger
