@@ -18,7 +18,7 @@ class NeuralModel():
         self.lr = lr                    # learning rate
         self.epochs = epochs
         self.dot = dot                  # dot loss          
-        self.lamb = lamb
+        self.lamb = lamb                # soft orthogonality regularization ratio
 
         # add logger
         self.logger = logger
