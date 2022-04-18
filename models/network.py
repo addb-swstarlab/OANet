@@ -32,7 +32,7 @@ class ReshapeNet(nn.Module):
 
     def forward(self, x):
         wk = x[:, -self.wk_num:] # only workload information
-        x = x[:, :-self.wk_num] # only knobs
+        x = x[:, :-self.wk_num] # only knobs information
         
         self.embed_wk = self.embedding(wk) # (batch, 4) -> (batch, dim)
         self.embed_wk = self.embed_wk.unsqueeze(1) # (batch, 1, dim)
