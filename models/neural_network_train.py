@@ -62,7 +62,7 @@ class NeuralModel():
                 self.best_model = self.model
                 self.best_outputs = te_outputs
                 self.best_epoch = epoch
-                torch.save(self.best_model, os.path.join('model_save', name))
+                torch.save(self.best_model, os.path.join('model_save', name))   # save best model
         self.logger.info(f"best loss is {best_loss:.4f} in [{self.best_epoch}/{self.epochs}]epoch, save model to {os.path.join('model_save', name)}")                
         print(f"best loss is {best_loss:.4f} in [{self.best_epoch}/{self.epochs}]epoch")
 
@@ -85,7 +85,7 @@ class NeuralModel():
             if self.mode == 'reshape':
                 output = model(data) # output.shape = (batch_size, 1)
 
-                if self.dot:
+                if self.dot:    
                     ## dot
                     dot = torch.bmm(model.res_x, model.res_x.transpose(1,2))    # bmm : batch matrix multiplication --> [B, n, m] x [B, m, p] = [B, n, p]
 
