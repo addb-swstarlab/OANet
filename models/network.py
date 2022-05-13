@@ -15,7 +15,7 @@ class SingleNet(nn.Module):
         self.x_im = self.im_fc(self.x_kb)
         return self.x_im
 
-class ReshapeNet(nn.Module):
+class ReshapeNet(nn.Module):    # OANet
     def __init__(self, input_dim, hidden_dim, output_dim, group_dim, wk_num):
         super(ReshapeNet, self).__init__()
         self.input_dim = input_dim - wk_num
