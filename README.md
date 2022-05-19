@@ -20,3 +20,7 @@ eval          : model goes eval mode
 ```
 python main.py --train --mode {reshape or single } --external {external matrix} --dot --lamb {lamb} --hidden_size {hidden size} --group_size {group size} --epochs {epochs} --lr {learning rate}
 ```
+
+We used RocksDB in our experiments.
+The dataset consists of data for multiple workloads environment.
+And Each row of the dataset for each workload consists of Knob configuration values and performance values.
