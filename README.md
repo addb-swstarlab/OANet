@@ -23,4 +23,4 @@ python main.py --train --mode {reshape or single } --external {external matrix} 
 
 We used RocksDB in our experiments.
 The dataset consists of data for multiple workloads environment.
-And Each row of the dataset for each workload consists of Knob configuration values and performance values.
+And each row of the dataset for each workload consists of Knob configuration values and performance values.
