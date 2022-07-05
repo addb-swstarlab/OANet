@@ -1,5 +1,5 @@
-# OANet
-We propose OANet using the attention mechanism to predict database performance so that the relationship between Knob and the workload can also be considered
+# DPPML
+We propose DPPML using meta-learning(Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks) mechanism to predict database performance 
 
 ## TRAIN
 ### Run main.py to train the proposed model. The meaning of paser is as follows. 
