@@ -40,12 +40,6 @@ logger.info("## model hyperparameter information ##")
 for i in vars(opt):
     logger.info(f'{i}: {vars(opt)[i]}')
 
-# KNOB_PATH = 'data/knobs.csv'
-# EXTERNAL_PATH = 'data/external'
-# WK_NUM = 4
-
-
-
 DATA_PATH = "./data"
 WK_NUM = 16
 # MODE = 'reshape'
