@@ -13,7 +13,7 @@ lamb          : application rate of dot loss
 lr            : learning rate
 act_function  : activation function
 epochs        : epoch number of train
-train         : model goes triain mode
+train         : model goes train mode
 eval          : model goes eval mode
 </pre>
 * #### Training the model
