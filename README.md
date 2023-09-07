@@ -26,5 +26,6 @@ The dataset consists of data for multiple workloads environment.
 And each row of the dataset for each workload consists of Knob configuration values and performance values.
 
 ## Paper
+### This paper received the Excellent Paper Award from the KSC 2021.
 Below is link of OANet paper\
 [Paper link](https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11035616&mark=0&useDate=&ipRange=N&accessgl=Y&language=ko_KR&hasTopBanner=true)
