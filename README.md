@@ -4,7 +4,7 @@ We propose OANet using the attention mechanism to predict database performance s
 ## TRAIN
 ### Run main.py to train the proposed model. The meaning of paser is as follows. 
 <pre>
-external      : external matrix (TIME, RATE, WAF, SA)
+external      : external matrics (TIME, RATE, WAF, SA)
 mode          : kind of neural network ('reshape' is a proposed model, 'single'is a single layer neural network)
 hidden_size   : hidden size of the model
 group_size    : group size of the model
@@ -12,7 +12,7 @@ dot           : Whether to use dot-loss or not
 lamb          : application rate of dot loss
 lr            : learning rate
 act_function  : activation function
-epochs        : epoch number of train
+epochs        : Number of epochs to run during train step
 train         : model goes train mode
 eval          : model goes eval mode
 </pre>
