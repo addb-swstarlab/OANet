@@ -9,7 +9,7 @@ mode          : kind of neural network ('reshape' is a proposed model, 'single'i
 hidden_size   : hidden size of the model
 group_size    : group size of the model
 dot           : Whether to use dot-loss or not
-lamb          : application rate of dot loss
+lamb          : Weighted value of dot loss
 lr            : learning rate
 act_function  : activation function
 epochs        : Number of epochs to run during train step
