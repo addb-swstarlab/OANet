@@ -42,13 +42,6 @@ for i in vars(opt):
 
 DATA_PATH = "./data"
 WK_NUM = 16
-# MODE = 'reshape'
-# batch_size = 64
-# lr = 0.01
-# epochs = 30
-
-# group_dim = 8
-
 
 
 def main():
