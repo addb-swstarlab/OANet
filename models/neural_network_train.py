@@ -252,3 +252,12 @@ class adaptation_trainer():
         total_dot_loss /= len(train_loader)
 
         return total_loss, total_dot_loss, outputs 
+    
+    def valid(self, model, valid_loader):
+        model.eval()
+
+        ## Valid start    
+        total_loss = 0.
+        total_dot_loss = 0.
+        outputs = torch.Tensor().cuda()
+        r2_res = 0
