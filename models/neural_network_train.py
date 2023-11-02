@@ -110,4 +110,26 @@ class MAML_trainer():
         print(f'Saved model state dict! name : {self.name}')
     
     def inner_loop(self, iter):     # i: task , iteration : iteration
-        pass
+        # copy inner model to current maml weights
+        temp_weights = [w.clone() for w in self.weights]       
+          
+        # training on data sampled from each task
+        X, y = self.sample_tr[0], self.sample_tr[1]
+        ##########################################################
+        X_val, y_val = self.sample_val[0], self.sample_val[1]
+        ###########################################################
+        inner_loss = self.criterion(self.model.parameterised(X, temp_weights), y)
+        grad = torch.autograd.grad(inner_loss, temp_weights)
+        temp_weights = [w - self.inner_lr * g for w, g in zip(temp_weights, grad)]
+
+        temp_pred = self.model.parameterised(X_val, temp_weights)
+        
+        # calculate loss for update maml weight (with update inner loop weight)
+        if self.dot:
+            d = torch.bmm(self.model.p_res_x, self.model.p_res_x.transpose(1, 2))
+            dot_loss = F.mse_loss(d, torch.eye(d.size(1)).repeat(X.shape[0], 1, 1).cuda())
+            meta_loss = (1-self.lamb)*self.criterion(temp_pred, y) + self.lamb*dot_loss
+        else:
+            meta_loss = self.self.criterion(temp_pred, y_val)
+        
+        return inner_loss, meta_loss
