@@ -225,3 +225,30 @@ class adaptation_trainer():
         total_loss = 0.
         total_dot_loss = 0.
         outputs = torch.Tensor().cuda()
+        
+        for data, target in train_loader:
+            optimizer.zero_grad()
+            ## predict
+            if self.mode == 'reshape':
+                output = model(data) # output.shape = (batch_size, 1)
+
+                if self.dot:    
+                    ## dot
+                    dot = torch.bmm(model.res_x, model.res_x.transpose(1,2))    # bmm : batch matrix multiplication --> [B, n, m] x [B, m, p] = [B, n, p]
+                    dot_loss = F.mse_loss(dot, torch.eye(dot.size(1)).repeat(data.shape[0], 1, 1).cuda())
+                    ## loss
+                    loss = (1-self.lamb)*F.mse_loss(output, target) + self.lamb*dot_loss
+                    total_dot_loss += dot_loss.item()
+                else:
+                    loss = F.mse_loss(output, target)
+
+            ## backpropagation
+            loss.backward()
+            optimizer.step()
+            ## Logging
+            total_loss += loss.item()
+            outputs = torch.cat((outputs, output))
+        total_loss /= len(train_loader)
+        total_dot_loss /= len(train_loader)
+
+        return total_loss, total_dot_loss, outputs 
