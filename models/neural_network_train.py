@@ -163,3 +163,17 @@ class MAML_trainer():
         r2_res /= len(wk_valid_loader) * len(self.test_dataloaders)
 
         return total_loss, outputs, r2_res
+    
+
+class adaptation_trainer():
+    def __init__(self, model, train_dataloaders, test_dataloaders, num_epochs, lr, dot=True, lamb=0.6):
+                        
+        self.patience = 10  # for early stopping 
+        self.model = model        
+        self.train_dataloaders = train_dataloaders
+        self.test_dataloaders = test_dataloaders
+
+        self.num_epochs = num_epochs
+        self.lr = lr
+        self.dot = dot
+        self.lamb = lamb
