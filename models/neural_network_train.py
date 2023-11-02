@@ -217,3 +217,11 @@ class adaptation_trainer():
     
     def predict(self, X):
         return self.model(X)
+    
+    def train(self, model, train_loader):        
+        optimizer = optim.Adam(model.parameters(), lr=self.lr)
+        model.train()
+
+        total_loss = 0.
+        total_dot_loss = 0.
+        outputs = torch.Tensor().cuda()
