@@ -32,3 +32,9 @@ def train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt):
     # Adaptation step
     adapt = adaptation_trainer(model, Adapt_DL_tr, Adapt_DL_te, num_epochs=epochs, lr=lr)
     adapt.fit()
+    
+    # Predict
+    outputs = adapt.predict(norm_x_te)
+
+    true = norm_y_te.cpu().detach().numpy().squeeze()
+    pred = outputs.cpu().detach().numpy().squeeze()
