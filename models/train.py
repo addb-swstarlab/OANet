@@ -16,3 +16,7 @@ def train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt):
     group_dim = opt.group_size
     dot = opt.dot
     lamb=opt.lamb
+
+    # Split DL_tr, DL_te to MAML, Adaptation dataloader
+    MAML_DL_tr, MAML_DL_val, MAML_DL_te = DL_tr[:-1], DL_val[:-1], DL_te[:-1]
+    Adapt_DL_tr, Adapt_DL_val, Adapt_DL_te = DL_tr[-1], DL_val[-1], DL_te[-1]
