@@ -56,6 +56,16 @@ def main():
     X_tr, X_te = []   # train data of knob
     Y_tr, Y_te = []   # train data of external metric
     one_hot = np.eye(WK_NUM)
+    
+    for wk in range(WK_NUM):
+        if wk == (WK_NUM - 1):
+            raw_data_wk = pd.read_csv(os.path.join(DATA_PATH, f'rocksdb_benchmark_{str(opt.target)}.csv'))
+        else:
+            raw_data_wk = pd.read_csv(os.path.join(DATA_PATH, f'rocksdb_benchmark_{str(wk)}.csv'))
+            
+        oh = np.repeat([one_hot[wk]], len(raw_data_wk), axis=0)
+        oh = pd.DataFrame(oh)
+        raw_data_wk = pd.concat((raw_data_wk, oh), axis=1)
         
     logger.info('## get raw data DONE ##')
   
