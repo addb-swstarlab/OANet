@@ -100,7 +100,6 @@ def main():
         logger.info(f'\nMetric : {opt.external}')
         logger.info(f'  R2 score : {R2:.4f}')
         logger.info(f'  MSE score : {MSE:.4f}')
-
             
     elif opt.eval:
         logger.info('## EVAL MODE ##')
