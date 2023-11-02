@@ -177,3 +177,22 @@ class adaptation_trainer():
         self.lr = lr
         self.dot = dot
         self.lamb = lamb
+        
+    def forward(self):
+        self.fit()
+
+    def fit(self):
+      
+        best_loss = np.inf
+        self.logger.info(f"[Train MODE] Training Model") 
+        name = get_filename('model_save', 'model', '.pt')
+        
+        for epoch in range(self.epochs):
+            loss_tr, dot_loss_tr, _ = self.train(self.model, self.train_dataloaders)
+            loss_te, dot_loss_te, te_outputs, r2_res = self.valid(self.model, self.test_dataloaders)
+
+            time = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
+            if self.dot:
+                self.logger.info(f"[{epoch:02d}/{self.epochs}] loss_tr: {loss_tr:.8f}\tloss_te:{loss_te:.8f} \tdot loss_tr: {dot_loss_tr:.8f}\tdot loss_te:{dot_loss_te:.8f}\t r2:{r2_res:.4f}")
+            else:
+                self.logger.info(f"[{epoch:02d}/{self.epochs}] loss_tr: {loss_tr:.8f}\tloss_te:{loss_te:.8f}\t r2:{r2_res:.4f}")
