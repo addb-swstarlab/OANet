@@ -53,6 +53,9 @@ def main():
     
     logger.info("## get raw datas ##")
 
+    X_tr, X_te = []   # train data of knob
+    Y_tr, Y_te = []   # train data of external metric
+    one_hot = np.eye(WK_NUM)
         
     logger.info('## get raw data DONE ##')
   
