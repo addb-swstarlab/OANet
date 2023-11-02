@@ -86,6 +86,8 @@ def main():
     # make dataloader
     logger.info('## make dataloader ##')
      
+    DL_tr, DL_te, norm_x_te, norm_y_te = MAML_dataset(X_tr, Y_tr, X_te, Y_te, scaler_X, scaler_Y, WK_NUM, batch_size=opt.batch_size)
+    DL_val, _, _, _  = MAML_dataset(X_tr, Y_tr, X_te, Y_te, scaler_X, scaler_Y, WK_NUM, batch_size=opt.batch_size)    
     
     logger.info('## make dataloader DONE ##')
 
