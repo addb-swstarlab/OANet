@@ -44,3 +44,9 @@ def train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt):
 
     del norm_X_tr, norm_X_te, norm_y_tr, norm_y_te
     torch.cuda.empty_cache()
+    
+    df_pred = pd.DataFrame(columns=("METRIC", "R2", "MSE"))    
+    score = [ (METRIC, R2, MSE) ]
+    ex = pd.DataFrame(score, columns=["METRIC", "R2", "MSE"])
+    df_pred = pd.concat(([df_pred, ex]), ignore_index=True )
+    return R2, MSE, true, pred, df_pred
