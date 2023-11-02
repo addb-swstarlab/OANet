@@ -35,7 +35,10 @@ def MAML_dataset(X_tr, Y_tr, X_te, Y_te, scaler_x, scaler_y, wk, batch_size=1):
     return DL_tr, DL_te, s_test_X_te, s_test_y_te
 
 class Sampler():  
-    pass
+    def __init__(self, dataloaders):
+        self.wk_num = len(dataloaders)
+        self.dataloaders = dataloaders
+        self.iterators = self.get_iterators()
 
     
 def get_filename(PATH, head, tail):
