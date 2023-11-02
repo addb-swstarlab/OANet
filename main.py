@@ -76,8 +76,13 @@ def main():
         Y_te.append(y_te)
         
     logger.info('## get raw data DONE ##')
-  
-       
+
+    # calculate scaler
+    X_tr_concat = pd.concat(X_tr)
+    Y_tr_concat = pd.concat(Y_tr)    
+    scaler_X = MinMaxScaler().fit(X_tr_concat)
+    scaler_Y = StandardScaler().fit(Y_tr_concat)     
+
     # make dataloader
     logger.info('## make dataloader ##')
      
