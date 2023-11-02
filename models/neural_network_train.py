@@ -133,3 +133,6 @@ class MAML_trainer():
             meta_loss = self.self.criterion(temp_pred, y_val)
         
         return inner_loss, meta_loss
+    
+    def validate(self, model):
+        pass
