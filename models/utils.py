@@ -26,24 +26,6 @@ class Sampler():
             samples[i] = next(self.iterators[i])
         return samples
 
-    # def __init__(self, dataloaders, wk_num):    # wk_num type : list ex) wk_num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    #     self.wk_num = wk_num
-    #     self.dataloaders = dataloaders
-    #     self.iterators = self.get_iterators()    
-
-    # def get_iterators(self):
-    #     iterators = []
-    #     for i in range(len(self.wk_num)):
-    #         wk = self.wk_num[i]
-    #         iterators.append(iter(self.dataloaders[i]))
-    #     return iterators
-
-    # def get_sample(self):
-    #     samples = {}
-    #     for i in range(len(self.wk_num)):
-    #         wk = self.wk_num[i]            
-    #         samples[wk] = next(self.iterators[i])
-    #     return samples
 
 def MAML_dataset(entire_X_tr, entire_y_tr, entire_X_te, entire_y_te, scaler_X, scaler_y, wk, batch_size=1):
     DL_tr = []
