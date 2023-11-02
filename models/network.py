@@ -32,3 +32,18 @@ class ReshapeNet(nn.Module):
         outs = self.attn_output
         self.outputs = self.fc(outs)  
         return self.outputs
+    
+    def forward(self, x):
+        wk = x[:, -self.wk_vec_dim:] # workload vector
+        x = x[:, :-self.wk_vec_dim] # knobs vector
+        
+        self.embed_wk = self.embedding(wk) # (batch, 4) -> (batch, dim)
+        self.embed_wk = self.embed_wk.unsqueeze(1) # (batch, 1, dim)
+        self.x = self.knob_fc(x) # (batch, 22) -> (batch, group*hidden)
+        self.res_x = torch.reshape(self.x, (-1, self.group_dim, self.hidden_dim)) # (batch, group, hidden)
+        
+        self.attn_output, self.attn_weights = self.attention(self.embed_wk.permute((1,0,2)), self.res_x.permute((1,0,2)), self.res_x.permute((1,0,2)))
+        self.attn_output = self.activate(self.attn_output.squeeze())
+        outs = self.attn_output
+        self.outputs = self.fc(outs)  
+        return self.outputs
