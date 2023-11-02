@@ -214,3 +214,6 @@ class adaptation_trainer():
         print(f"best loss is {best_loss:.4f} in [{self.best_epoch}/{self.epochs}]epoch")
 
         return self.best_outputs
+    
+    def predict(self, X):
+        return self.model(X)
