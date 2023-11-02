@@ -1,14 +1,12 @@
 import os
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import TensorDataset, DataLoader
 from datetime import datetime
 import numpy as np
 from sklearn.metrics import r2_score
-from models.network import SingleNet, ReshapeNet
-from models.utils import get_filename
-# from pytorchtools import EarlyStopping
+from models.utils import get_filename, Sampler
 
 class NeuralModel():
     def __init__(self, logger, mode, batch_size, lr, epochs, input_dim, hidden_dim, 
