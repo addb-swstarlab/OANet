@@ -83,5 +83,31 @@ class MAML_trainer():
             time_ = datetime.datetime.today().strftime('%y%m%d/%H:%M:%S')
             print(f"{time_}[{e:02d}/{self.num_epochs}] meta_loss: {meta_loss_sum:.4f} loss_te: {loss_te:.4f}, r2_res = {r2_res:.4f}")
     
+                # early stopping
+            if loss_te > self.best_loss:
+                trigger_times += 1
+                if trigger_times >= self.patience:
+                    print('Early stopping! \n training step finish')
+                    breaker = True
+            else:
+                self.best_loss = loss_te
+                self.best_ouputs = te_outputs
+                self.best_r2_score = r2_res
+                self.best_model = self.model
+                self.best_epoch_num = e
+                print('Trigger Times: 0')
+                trigger_times = 0  
+
+            print(f"{time_}[{e:02d}/{self.num_epochs}] meta_loss: {meta_loss_sum:.4f} loss_te: {loss_te:.4f}, r2_res = {r2_res:.4f} / trrigger times : {trigger_times}")  
+
+            if breaker == True:
+                break
+            ###############################################################
+
+
+        self.name = get_filename('model_save', 'MAML_train', '.pt')
+        torch.save(self.best_model.state_dict(), os.path.join('model_save', self.name))  # save only state_dict of model
+        print(f'Saved model state dict! name : {self.name}')
+    
     def inner_loop(self, iter):     # i: task , iteration : iteration
         pass
