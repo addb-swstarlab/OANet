@@ -38,3 +38,9 @@ def train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt):
 
     true = norm_y_te.cpu().detach().numpy().squeeze()
     pred = outputs.cpu().detach().numpy().squeeze()
+    
+    R2 = r2_score(true, pred)
+    MSE = mean_squared_error(true, pred)
+
+    del norm_X_tr, norm_X_te, norm_y_tr, norm_y_te
+    torch.cuda.empty_cache()
