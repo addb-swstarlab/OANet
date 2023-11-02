@@ -135,4 +135,31 @@ class MAML_trainer():
         return inner_loss, meta_loss
     
     def validate(self, model):
-        pass
+        model.eval()
+
+        total_loss = 0
+        total_dot_loss = 0        
+        outputs = torch.Tensor().cuda()
+        r2_res = 0
+        with torch.no_grad():
+            for wk_valid_loader in self.test_dataloaders:
+                for data, target in wk_valid_loader:
+                    output = model(data)
+                    if self.dot:
+                        d = torch.bmm(model.res_x, model.res_x.transpose(1, 2))
+                        dot_loss = F.mse_loss(d, torch.eye(d.size(1)).repeat(data.shape[0], 1, 1).cuda())
+                        loss = (1-self.lamb)*F.mse_loss(output, target) + self.lamb*dot_loss
+                    else:
+                        dot_loss = 0
+                        loss = F.mse_loss(output, target)
+                    true = target.cpu().detach().numpy().squeeze()
+                    pred = output.cpu().detach().numpy().squeeze()
+                    r2_res += r2_score(true, pred)
+                    total_loss += loss.item()
+                    total_dot_loss += dot_loss.item()
+                    outputs = torch.cat((outputs, output))
+        total_loss /= len(wk_valid_loader) * len(self.test_dataloaders)
+        total_dot_loss /= len(wk_valid_loader) * len(self.test_dataloaders)
+        r2_res /= len(wk_valid_loader) * len(self.test_dataloaders)
+
+        return total_loss, outputs, r2_res
