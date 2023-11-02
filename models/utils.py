@@ -40,6 +40,11 @@ class Sampler():
         self.dataloaders = dataloaders
         self.iterators = self.get_iterators()
 
+    def get_iterators(self):
+        iterators = []
+        for i in range(self.wk_num):
+            iterators.append(iter(self.dataloaders[i]))
+        return iterators
     
 def get_filename(PATH, head, tail):
     pass
