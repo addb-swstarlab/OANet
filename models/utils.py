@@ -53,7 +53,16 @@ class Sampler():
         return samples
     
 def get_filename(PATH, head, tail):
-    pass
+    i = 0
+    today = datetime.datetime.now()
+    today = today.strftime('%Y%m%d')
+    if not os.path.exists(os.path.join(PATH, today)):
+        os.mkdir(os.path.join(PATH, today))
+    name = today+'/'+head+'-'+today+'-'+'%02d'%i+tail
+    while os.path.exists(os.path.join(PATH, name)):
+        i += 1
+        name = today+'/'+head+'-'+today+'-'+'%02d'%i+tail
+    return name
 
 
 def get_logger(log_path='./logs'):
