@@ -67,6 +67,14 @@ def main():
         oh = pd.DataFrame(oh)
         raw_data_wk = pd.concat((raw_data_wk, oh), axis=1)
         
+        X = raw_data_wk.iloc[:,EX_NUM:]
+        Y = raw_data_wk[[opt.external]]       
+        x_tr, x_te, y_tr, y_te = train_test_split(X, Y, test_size=0.2, shuffle=True)
+        X_tr.append(x_tr)
+        X_te.append(x_te)
+        Y_tr.append(y_tr)
+        Y_te.append(y_te)
+        
     logger.info('## get raw data DONE ##')
   
        
