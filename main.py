@@ -95,6 +95,12 @@ def main():
     if opt.train:
         R2, MSE, true, pred, df_pred = train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt=opt) 
 
+        logger.info(f'\npred = \n{pred[:5]}, {np.exp(pred[:5])}')
+        logger.info(f'\ntrue = \n{true[:5]}, {np.exp(true[:5])}')
+        logger.info(f'\nMetric : {opt.external}')
+        logger.info(f'  R2 score : {R2:.4f}')
+        logger.info(f'  MSE score : {MSE:.4f}')
+
             
     elif opt.eval:
         logger.info('## EVAL MODE ##')
