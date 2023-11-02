@@ -93,7 +93,8 @@ def main():
 
     
     if opt.train:
-        pass
+        R2, MSE, true, pred, df_pred = train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt=opt) 
+
             
     elif opt.eval:
         logger.info('## EVAL MODE ##')
