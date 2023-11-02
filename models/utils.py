@@ -28,6 +28,11 @@ def MAML_dataset(X_tr, Y_tr, X_te, Y_te, scaler_x, scaler_y, wk, batch_size=1):
         dataloader_te = DataLoader(dataset_te, batch_size=batch_size, shuffle=True)
         DL_tr.append(dataloader_tr)
         DL_te.append(dataloader_te)
+        
+    s_test_X_te = torch.Tensor(scaler_x.transform(test_X_te)).cuda()
+    s_test_y_te = torch.Tensor(scaler_y.transform(test_y_te)).cuda()
+
+    return DL_tr, DL_te, s_test_X_te, s_test_y_te
 
 class Sampler():  
     pass
