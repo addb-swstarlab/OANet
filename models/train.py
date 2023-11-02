@@ -28,3 +28,7 @@ def train_Net(DL_tr, DL_val, DL_te, norm_x_te, norm_y_te, WK_NUM, opt):
     maml.main_loop()
     trained_MAML_pt_path = maml.name
     model.load_state_dict(torch.load(trained_MAML_pt_path))
+    
+    # Adaptation step
+    adapt = adaptation_trainer(model, Adapt_DL_tr, Adapt_DL_te, num_epochs=epochs, lr=lr)
+    adapt.fit()
