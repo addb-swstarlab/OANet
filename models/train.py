@@ -1,17 +1,10 @@
-# train_train_test_split
-
 import torch
 import pandas as pd
 import numpy as np
-import os
-# from sklearn.model_selection import StratifiedKFold
-from models.neural_network_train import NeuralModel
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from models.network import ReshapeNet
 from sklearn.metrics import r2_score
-from scipy.stats import pearsonr
-from lifelines.utils import concordance_index
 from sklearn.metrics import mean_squared_error 
+from models.neural_network_train import MAML_trainer, adaptation_trainer
 
 def train_Net(logger, data, METRIC, MODE, batch_size, lr, epochs, hidden_dim, group_dim, WK_NUM, dot, EX_NUM=4, lamb=0.1):
     df_pred = pd.DataFrame(columns=("METRIC", "r2", 'pcc', "ci", "MSE"))
