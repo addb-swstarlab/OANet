@@ -196,3 +196,21 @@ class adaptation_trainer():
                 self.logger.info(f"[{epoch:02d}/{self.epochs}] loss_tr: {loss_tr:.8f}\tloss_te:{loss_te:.8f} \tdot loss_tr: {dot_loss_tr:.8f}\tdot loss_te:{dot_loss_te:.8f}\t r2:{r2_res:.4f}")
             else:
                 self.logger.info(f"[{epoch:02d}/{self.epochs}] loss_tr: {loss_tr:.8f}\tloss_te:{loss_te:.8f}\t r2:{r2_res:.4f}")
+                
+            # early stopping
+            if loss_te > self.best_loss:
+                trigger_times += 1
+                if trigger_times >= self.patience:
+                    print('Early stopping! \n training step finish')
+                    breaker = True
+
+            elif best_loss > loss_te:
+                best_loss = loss_te
+                self.best_model = self.model
+                self.best_outputs = te_outputs
+                self.best_epoch = epoch
+                torch.save(self.best_model, os.path.join('model_save', name))   # save best model
+        self.logger.info(f"best loss is {best_loss:.4f} in [{self.best_epoch}/{self.epochs}]epoch, save model to {os.path.join('model_save', name)}")                
+        print(f"best loss is {best_loss:.4f} in [{self.best_epoch}/{self.epochs}]epoch")
+
+        return self.best_outputs
