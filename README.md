@@ -20,7 +20,7 @@ eval          : model goes eval mode
 </pre>
 * #### Training the model
 ```
-python main.py --train --mode {reshape or single } --external {external matrix} --dot --lamb {lamb} --hidden_size {hidden size} --group_size {group size} --epochs {epochs} --lr {learning rate}
+python main.py --train --external {external matrix} --dot --lamb {lamb} --hidden_size {hidden size} --group_size {group size} --epochs {epochs} --in_lr {inner loop learning rate} --lr {learning rate}
 ```
 
 We used RocksDB in our experiments.
