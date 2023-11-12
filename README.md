@@ -6,15 +6,17 @@ We propose DPPML using meta-learning(Model-Agnostic Meta-Learning for Fast Adapt
 <pre>
 external      : external matrix (TIME, RATE, WAF, SA)
 mode          : kind of neural network ('reshape' is a proposed model)
+batch_size    : batch size of data
 hidden_size   : hidden size of the model
 group_size    : group size of the model
 dot           : Whether to use dot-loss or not
 lamb          : application rate of dot loss
+in_lr         : learning rate of inner loop step
 lr            : learning rate
 act_function  : activation function
 epochs        : epoch number of train
 train         : model goes triain mode
-eval          : model goes eval mode
+eval          : model goes eval mode  
 </pre>
 * #### Training the model
 ```
