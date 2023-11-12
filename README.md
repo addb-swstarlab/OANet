@@ -5,7 +5,7 @@ We propose DPPML using meta-learning(Model-Agnostic Meta-Learning for Fast Adapt
 ### Run main.py to train the proposed model. The meaning of paser is as follows. 
 <pre>
 external      : external matrix (TIME, RATE, WAF, SA)
-mode          : kind of neural network ('reshape' is a proposed model, 'single'is a single layer neural network)
+mode          : kind of neural network ('reshape' is a proposed model)
 hidden_size   : hidden size of the model
 group_size    : group size of the model
 dot           : Whether to use dot-loss or not
