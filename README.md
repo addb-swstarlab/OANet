@@ -26,3 +26,7 @@ python main.py --train --external {external matrix} --dot --lamb {lamb} --hidden
 We used RocksDB in our experiments.
 The dataset consists of data for multiple workloads environment.
 And each row of the dataset for each workload consists of Knob configuration values and performance values.
+
+## Paper
+### This paper received the Best Paper Award from the KCC 2022.
+
