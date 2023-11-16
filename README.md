@@ -30,4 +30,4 @@ And each row of the dataset for each workload consists of Knob configuration val
 ## Paper
 ### This paper received the Best Paper Award from the KCC 2022.
 Below is link of DPPML paper\
-[Paper link](https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11113247)
+[Paper link]([https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11113247](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11113247)https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11113247)
